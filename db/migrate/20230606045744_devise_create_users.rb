@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :first_name_kana,null: false #フリガナ（メイ）
       t.string :username,null: false #ユーザーアカウント名
       t.string :telephone_number,null: false #電話番号
-      t.boolean :is_deleted,null: false,default: false
+      t.boolean :is_deleted,null: false,default: false #true 退会 false 有効
     end
 
     add_index :users, :email,                unique: true
