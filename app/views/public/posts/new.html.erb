@@ -5,12 +5,12 @@
     </div>
   </div>
 
-  <%= render "public/shared/error_messages", resource: @post %>
+
 
   <div class="row">
     <div class="mx-auto">
 
-      <%= form_with model: @post,url: posts_path do |f| %>
+      <%= form_with model: @post, url: posts_path, local: true do |f| %>
       <table class="table table-borderless mt-3">
         <tr>
           <td><%= f.label :投稿画像 %></td>
@@ -25,16 +25,16 @@
           <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></td>
         </tr>
       </table>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-3">
+      <div class="row">
+        <div class="col-sm-3">
 
-      <div>
-        <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
+          <div>
+            <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
-  <% end %>
 </div>

@@ -1,2 +1,13 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <%= image_tag @post.image, size: "500x500" %>
+    </div>
+
+    <div class="row">
+        <p><%= @user.username %></p>
+    </div>
+
+    <div class="row">
+        <%= @post.text %>
+    </div>
+</div>
