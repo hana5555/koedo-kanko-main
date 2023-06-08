@@ -1,2 +1,53 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<div class="container">
+  <div class="col-md-8">
+
+    <div class="row offset-sm-1">
+      <h4 class="m-5">アカウント情報</h4>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="table-secondary" style="width: 20%;">氏名</td>
+              <td style="width: 80%;"><%= @user.last_name %><%= @user.first_name %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">フリガナ</td>
+              <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">アカウント名</td>
+              <td><%= @user.username %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">メールアドレス</td>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td class="table-secondary">電話番号</td>
+              <td><%= @user.telephone_number %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to "アカウント情報を編集する", edit_user_path(@user), class: "btn btn-sm btn-block btn-success" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to "HOMEへ", posts_path, class: "btn btn-sm btn-block btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

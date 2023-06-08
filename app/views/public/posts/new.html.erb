@@ -1,2 +1,40 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h4 class="m-3">新規投稿</h4>
+    </div>
+  </div>
+
+  <%= render "public/shared/error_messages", resource: @post %>
+
+  <div class="row">
+    <div class="mx-auto">
+
+      <%= form_with model: @post,url: posts_path do |f| %>
+      <table class="table table-borderless mt-3">
+        <tr>
+          <td><%= f.label :投稿画像 %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :キャプションを入力 %></td>
+          <td><%= f.text_area :text, placeholder: "キャプションを入力" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :カテゴリーを選択 %></td>
+          <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+
+      <div>
+        <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

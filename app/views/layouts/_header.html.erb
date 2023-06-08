@@ -1,0 +1,55 @@
+<!--管理者ヘッダー-->
+<% if admin_signed_in? %>
+  <li>
+    <%= link_to "HOME", admin_posts_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "コメント履歴一覧", admin_comments_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "カテゴリー一覧", admin_categories_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "町から、みなさまへ", admin_messages_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+
+<!--ログインユーザーのヘッダー-->
+<% elsif user_signed_in? %>
+  ようこそ、<%= link_to current_user.username, user_path(current_user) %>さん！
+  <li>
+    <%= link_to "HOME", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "マイページ", post_path(current_user), class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "町から、みなさまへ", messages_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+
+<!--未ログインユーザーのヘッダー-->
+<% else %>
+  <li>
+    <%= link_to "HOME", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "町から、みなさまへ", messages_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+  <li>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
+  </li>
+<% end %>

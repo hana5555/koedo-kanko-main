@@ -34,7 +34,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
-      t.references :message, null: false, foreign_key: true #お知らせID
+      # t.references :message, null: false, foreign_key: true #お知らせID
     end
 
     add_index :admins, :email,                unique: true

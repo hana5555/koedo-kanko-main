@@ -12,6 +12,25 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="footerFixed">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
+          <div class="container">
+            <a class="navbar-brand" href = "/">
+              <h2 class="logo">小江戸川越</h2>
+            </a>
+            <div class="d-flex flex-column">
+              <ul class="navbar-nav ml-auto">
+                <%= render "layouts/header" %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+      <footer class="border-black border-top pt-5 pb-4"></footer>
+    </div>
   </body>
 </html>

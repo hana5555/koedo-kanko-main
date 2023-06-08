@@ -48,9 +48,7 @@ ActiveRecord::Schema.define(version: 2023_06_06_060406) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "message_id", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["message_id"], name: "index_admins_on_message_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
@@ -126,7 +124,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_060406) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "admins", "messages"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"

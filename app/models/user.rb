@@ -9,4 +9,16 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  #ゲストログイン
+  def self.guest
+    find_or_create_by!(last_name: 'ゲスト', first_name: 'ユーザー', last_name_kana: 'ゲスト', first_name_kana: 'ユーザー', username: 'guestuser', email: 'guest@example.com', telephone_number: '00000000000') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  #フルネームで表示させる
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+
 end

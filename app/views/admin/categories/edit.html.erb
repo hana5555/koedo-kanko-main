@@ -1,2 +1,27 @@
-<h1>Admin::Categories#edit</h1>
-<p>Find me in app/views/admin/categories/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+        <h4 class="m-3">カテゴリー編集</h5>
+      </div>
+    </div>
+  </div>
+
+  <%= render "public/shared/error_messages", resource: @category %>
+
+  <%= form_with model: @category, url: admin_categories_path do |f| %>
+    <div class="row">
+      <div class="col-2">
+        <%= f.label :name, "カテゴリー名" %>
+      </div>
+      <div class="col-3">
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-3">
+        <%= f.submit "変更を保存", class: "btn btn-success btn-sm" %>
+      </div>
+      <div class="col-3">
+        <%= link_to "削除する", admin_categories_path(@category), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+      </div>
+    </div>
+    <% end %>
+</div>

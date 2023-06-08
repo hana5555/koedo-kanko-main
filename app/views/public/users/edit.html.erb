@@ -1,2 +1,80 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h4 class="m-6">アカウント情報編集</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <%= link_to "退会する", unsubscribe_path(@user), class: "btn btn-sm btn-block btn-danger" %>
+    </div>
+
+  </div>
+
+  <%= form_with model:@user, local:true do |f| %>
+  <%= render "public/shared/error_messages", resource: @user %>
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <label>氏名(姓)</label>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="col-sm-3">
+      <label>氏名(名)</label>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <label>フリガナ(セイ)</label>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :last_name_kana %>
+    </div>
+    <div class="col-sm-3">
+      <label>フリガナ(メイ)</label>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :first_name_kana %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <label>アカウント名</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :username %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <label>メールアドレス</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.email_field :email %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <label>電話番号</label>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :telephone_number %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.submit "変更を保存", class: 'btn btn-sm btn-block btn-success' %>
+  </div>
+  <% end %>
+
+</div>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'messages/index'
+  end
 #ユーザー用
   #URL /user/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
     resources :favorites, only:[:create, :destroy]
     resources :searches, only:[:search]
+    resources :messages, only:[:index]
   end
 
 
@@ -34,9 +38,15 @@ Rails.application.routes.draw do
     resources :posts, only:[:index, :show, :update]
     resources :comments, only:[:index, :show, :update]
     resources :users, only:[:index, :show, :edit, :update]
-    resources :categories, only:[:index, :create, :edit, :update]
+    resources :categories, only:[:index, :create, :edit, :update, :destroy]
     resources :messages, only:[:index, :new, :create, :edit, :update, :destroy]
   end
+
+#ゲストログイン用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
