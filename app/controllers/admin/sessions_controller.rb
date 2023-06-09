@@ -5,7 +5,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "ログインしました。"
-    admin_posts_path #管理者投稿一覧に遷移
+    admin_path #管理者投稿一覧に遷移
   end
 
   def after_sign_out_path_for(resource)

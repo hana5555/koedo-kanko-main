@@ -1,5 +1,29 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-<div class="row">
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+<div class="container">
+  <div class="row">
+    <%= image_tag "koedo.top.JPG", size: "1200x600" %>
+  </div>
+
+<!--ログイン済みのユーザー-->
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= link_to '新規投稿をする', new_post_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to '投稿を見る', posts_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= link_to "新規登録をする\n会員登録をすると投稿ができるようになります。", new_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to "投稿を見る", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      </div>
+    </div>
+  <% end %>
 </div>

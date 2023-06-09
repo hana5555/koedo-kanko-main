@@ -1,2 +1,16 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+    <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-md-4">
+
+            <div>
+                <%= link_to admin_post_path(post.id) do %>
+                    <%= image_tag(post.image) %>
+                <% end %>
+            </div>
+
+        </div>
+        <% end %>
+    </div>
+</div>
+

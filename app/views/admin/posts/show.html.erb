@@ -1,2 +1,28 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <%= image_tag @post.image, size: "500x500" %>
+    </div>
+
+    <div class="row">
+        <%= @post.user.username %>
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
+    </div>
+
+    <div class="row">
+        <%= @post.text %>
+    </div>
+
+    <%= form_with(model: [ :admin, @post ]) do |f| %>
+    <div class="row">
+      <%= f.label :公開ステータス %>
+      <%= f.radio_button :is_displayed, :true, checked: true %>
+      <%= f.label :status_true, "公開" %>
+      <%= f.radio_button :is_displayed, :false %>
+      <%= f.label :status_false, "非公開" %>
+    </div>
+
+    <div class="row">
+      <%= f.submit '更新する', class: "btn btn-success btn-sm" %>
+    </div>
+    <% end %>
+</div>

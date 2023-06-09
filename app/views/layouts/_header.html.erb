@@ -1,7 +1,7 @@
 <!--管理者ヘッダー-->
 <% if admin_signed_in? %>
   <li>
-    <%= link_to "HOME", admin_posts_path, class: "btn btn-outline-secondary btn-sm" %>
+    <%= link_to "HOME", admin_path, class: "btn btn-outline-secondary btn-sm" %>
   </li>
   <li>
     <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
