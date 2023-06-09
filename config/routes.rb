@@ -18,10 +18,15 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   scope module: :public do
-    resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only:[:create, :destroy]
+      resources :favorites, only:[:create, :destroy]
+      #下書き用のルーティング idは必要ないのでcollectionを使用
+      collection do
+        get 'confirm'
+      end
+    end
     resources :users, only:[:show, :edit, :update, :unsubscribe, :withdrawal]
-    resources :comments, only:[:create, :destroy]
-    resources :favorites, only:[:create, :destroy]
     resources :searches, only:[:search]
     resources :messages, only:[:index]
   end

@@ -1,9 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
-    @post = Post.all
-    #@posts = Post.user_id
-    #@posts = Post.published.page(params[:page]).reverse_order
-    #@posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @posts = Post.published.page(params[:page]).reverse_order
+    @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def new
@@ -22,7 +20,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(params[:id])
+    #@user = @post.User.find(params[:id])
   end
 
   def edit
@@ -31,13 +29,21 @@ class Public::PostsController < ApplicationController
   def update
   end
 
-  def destroy
+  def confirm
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
   end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
+  end
+
 
   private
 
   def post_params
-    params.require(:post).permit(:text, :image, :category_id, :status, :is_displayed)
+    params.require(:post).permit(:text, :image, :category_id, :status)
   end
 
 end

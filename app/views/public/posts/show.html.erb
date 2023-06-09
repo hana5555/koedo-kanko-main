@@ -4,10 +4,20 @@
     </div>
 
     <div class="row">
-        <p><%= @user.username %></p>
+        <%= @post.user.username %>
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
     </div>
 
     <div class="row">
         <%= @post.text %>
+    </div>
+
+    <div class="row">
+        <% if @post.user == current_user %>
+            <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
+        <% end %>
+        <% if @post.user == current_user %>
+            <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-success" %>
+        <% end %>
     </div>
 </div>
