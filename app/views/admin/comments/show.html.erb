@@ -1,2 +1,40 @@
-<h1>Admin::Comments#show</h1>
-<p>Find me in app/views/admin/comments/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4 class="m-5">コメント履歴詳細</h4>
+  </div>
+
+  <table class='table table-hover table-inverse col-sm-5'>
+    <tbody>
+      <tr>
+        <td>コメント投稿日時</td>
+        <td><%= @comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td><%= @comment.user.full_name %></td>
+      </tr>
+      <tr>
+        <td>アカウント名</td>
+        <td><%= @comment.user.username %></td>
+      </tr>
+      <tr>
+        <td>コメント内容</td>
+        <td><%= @comment.comment %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= form_with(model: [ :admin, @comment ]) do |f| %>
+  <div class="row">
+    <%= f.label :公開ステータス %>
+    <%= f.radio_button :is_displayed, :true, checked: true %>
+    <%= f.label :status_true, "公開" %>
+    <%= f.radio_button :is_displayed, :false %>
+    <%= f.label :status_false, "非公開" %>
+  </div>
+
+  <div class="row">
+    <%= f.submit '変更を保存', class: "btn btn-success btn-sm" %>
+  </div>
+  <% end %>
+</div>
