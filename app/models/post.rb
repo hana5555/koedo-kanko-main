@@ -18,4 +18,24 @@ class Post < ApplicationRecord
   scope :display, -> {where(is_displayed: true)}
   scope :undisplay, -> {where(is_displayed: false)}
 
+  #いいね機能用
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
+    #検索方法の分岐定義
+  def self.looks(search, word)
+    if search == "perfect"
+      @post = Post.where("text LIKE?", "#{word}")
+    elsif search == "forward"
+      @post = Post.where("text LIKE?", "#{word}%")
+    elsif search == "backward"
+      @post = Post.where("text LIKE?", "%#{word}")
+    elsif search == "partial"
+      @post = Post.where("text LIKE?", "%#{word}%")
+    else
+      @post = Post.all
+    end
+  end
+
 end

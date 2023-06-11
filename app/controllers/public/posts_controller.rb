@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
     @posts = Post.published.page(params[:page]).reverse_order
     @posts = Post.display.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @category = Category.all
   end
 
   def new
@@ -22,6 +23,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @category = Category.all
   end
 
   def edit

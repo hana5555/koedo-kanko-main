@@ -2,6 +2,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @category = Category.all
   end
 
   def update

@@ -1,28 +1,38 @@
 <div class="container">
     <div class="row">
-        <%= image_tag @post.image, size: "500x500" %>
-    </div>
+      <div class="col-md-3">
 
-    <div class="row">
-        <%= @post.user.username %>
-        <%= @post.created_at.strftime('%Y/%m/%d') %>
-    </div>
+            <!--部分テンプレート カテゴリー検索機能-->
+            <%= render 'public/posts/category_index', category: @category %>
+      </div>
 
-    <div class="row">
-        <%= @post.text %>
-    </div>
+      <div class="col-md-4">
+        <div class="row">
+          <%= image_tag @post.image, size: "500x500" %>
+        </div>
 
-    <%= form_with(model: [ :admin, @post ]) do |f| %>
-    <div class="row">
-      <%= f.label :公開ステータス %>
-      <%= f.radio_button :is_displayed, :true, checked: true %>
-      <%= f.label :status_true, "公開" %>
-      <%= f.radio_button :is_displayed, :false %>
-      <%= f.label :status_false, "非公開" %>
-    </div>
+        <div class="row">
+          <%= @post.user.username %>
+          <%= @post.created_at.strftime('%Y/%m/%d') %>
+        </div>
 
-    <div class="row">
-      <%= f.submit '更新する', class: "btn btn-success btn-sm" %>
+        <div class="row">
+          <%= @post.text %>
+        </div>
+
+        <%= form_with(model: [ :admin, @post ]) do |f| %>
+        <div class="row">
+          <%= f.label :公開ステータス %>
+          <%= f.radio_button :is_displayed, :true, checked: true %>
+          <%= f.label :status_true, "公開" %>
+          <%= f.radio_button :is_displayed, :false %>
+          <%= f.label :status_false, "非公開" %>
+        </div>
+
+        <div class="row">
+          <%= f.submit '更新する', class: "btn btn-success btn-sm" %>
+        </div>
+          <% end %>
+      </div>
     </div>
-    <% end %>
 </div>

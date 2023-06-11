@@ -1,16 +1,20 @@
 <div class="container">
     <div class="row">
+        <div class="col-md-3">
+
+            <!--部分テンプレート カテゴリー検索機能-->
+            <%= render 'public/posts/category_index', category: @category %>
+        </div>
+
         <% @posts.each do |post| %>
         <div class="col-md-4">
-
             <div>
                 <%= link_to admin_post_path(post.id) do %>
                     <%= image_tag(post.image) %>
                 <% end %>
             </div>
-
+            <% end %>
         </div>
-        <% end %>
     </div>
 </div>
 

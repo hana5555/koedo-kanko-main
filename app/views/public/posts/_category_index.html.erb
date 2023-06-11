@@ -1,0 +1,12 @@
+<div class="row">
+  <table class="table table-borderless">
+    <tr>
+      <th class="text-center">カテゴリー</th>
+    </tr>
+    <% category.each_with_index do |category| %>
+    <tr>
+      <td><%= link_to category.name, posts_path(category_id: category.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

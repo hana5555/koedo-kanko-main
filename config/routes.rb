@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get 'categories/index'
+  end
+  namespace :public do
     get 'messages/index'
   end
 #ユーザー用
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
   get '/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
   #論理削除用のルーティング
   patch '/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
+
+  #検索機能用のルーティング
+  get 'search' => 'public/searches#search'
 
   root to: 'public/homes#top'
   scope module: :public do
