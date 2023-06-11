@@ -1,2 +1,23 @@
-<h1>Admin::Messages#index</h1>
-<p>Find me in app/views/admin/messages/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4 class="m-3">観光客に向けたメッセージ</h4>
+  </div>
+
+  <div class="row">
+    <%= link_to "新規作成", new_admin_message_path, class: 'btn btn-lg btn-success' %>
+  </div>
+
+  <div class="row">
+  <% @message.each do |message| %>
+    <div class="col-md-3">
+      <%= image_tag(message.image) %>
+    </div>
+    <div class="col-md-3">
+      <%= message.message %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "編集する", edit_admin_message_path(message.id), class: 'btn btn-lg btn-success' %>
+    </div>
+  <% end %>
+  </div>
+</div>
