@@ -8,7 +8,6 @@ class Admin::MessagesController < ApplicationController
   end
 
   def create
-    #Message.create!(message_params)
     @message = Message.new(message_params)
     if @message.save
       redirect_to admin_messages_path(@message)
@@ -18,12 +17,22 @@ class Admin::MessagesController < ApplicationController
   end
 
   def edit
+    @message = Message.find(params[:id])
   end
 
   def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      redirect_to admin_messages_path(@message)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to admin_messages_path
   end
 
 
