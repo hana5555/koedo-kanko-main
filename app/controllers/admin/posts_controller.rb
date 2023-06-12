@@ -1,5 +1,9 @@
 class Admin::PostsController < ApplicationController
 
+  def index
+    @posts = Post.published.page(params[:page]).reverse_order
+  end
+
   def show
     @post = Post.find(params[:id])
     @category = Category.all

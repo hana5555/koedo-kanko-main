@@ -2,10 +2,14 @@
     <div class="row">
         <div class="col-md-3">
 
+            <!--部分テンプレート カテゴリー検索機能-->
+            <%= render 'public/posts/category_index', category: @categories %>
+        </div>
+
         <% @posts.each do |post| %>
         <div class="col-md-4">
             <div>
-                <%= link_to admin_post_path(post.id) do %>
+                <%= link_to post_path(post.id) do %>
                     <%= image_tag(post.image) %>
                 <% end %>
             </div>

@@ -3,7 +3,7 @@
     <tr>
       <th class="text-center">カテゴリー</th>
     </tr>
-    <% category.each_with_index do |category| %>
+    <% category.each do |category| %>
     <tr>
       <td><%= link_to category.name, posts_path(category_id: category.id) %></td>
     </tr>

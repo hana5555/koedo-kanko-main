@@ -4,6 +4,12 @@ class Public::PostsController < ApplicationController
     @posts = Post.display.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @category = Category.all
+    if params[:category_id].present?
+      @categories = Category.all
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.order(created_at: :desc).all.page(params[:page])
+      render :category_result
+    end
   end
 
   def new
@@ -34,7 +40,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
-      redirect_to posts_path
+      redirect_to posts_path(current_user)
     else
       render :edit
     end
