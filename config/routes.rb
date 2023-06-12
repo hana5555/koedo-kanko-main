@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   #検索機能用のルーティング
   get 'search' => 'public/searches#search'
 
+  get '/posts/:id/mypage' => 'public/posts#mypage', as: 'mypage'
+
   root to: 'public/homes#top'
   scope module: :public do
     resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy] do

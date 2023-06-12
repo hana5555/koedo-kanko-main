@@ -12,6 +12,11 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def mypage
+    @posts = current_user.posts.published.page(params[:page]).reverse_order
+    @category = Category.all
+  end
+
   def new
     @post = Post.new
   end
