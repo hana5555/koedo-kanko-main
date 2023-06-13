@@ -5,7 +5,6 @@ class Admin::CommentsController < ApplicationController
 
   def commentpage
     @user = User.find(params[:id])
-    #@comment = Comment.page(params[:page])
     @comment = @user.comments.page(params[:page]).reverse_order
   end
 
@@ -16,6 +15,7 @@ class Admin::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
+    flash[:notice] = "コメントステータスを更新しました。"
     redirect_to admin_comments_path
   end
 

@@ -1,3 +1,6 @@
+<div>
+    <%= flash[:notice] %>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -6,7 +9,7 @@
         <div class="col-md-4">
             <div>
                 <%= link_to admin_post_path(post.id) do %>
-                    <%= image_tag(post.image) %>
+                    <%= image_tag (post.image), size: "300x300" %>
                 <% end %>
             </div>
             <% end %>

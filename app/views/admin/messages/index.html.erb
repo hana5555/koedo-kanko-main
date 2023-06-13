@@ -1,3 +1,6 @@
+<div>
+  <%= flash[:notice] %>
+</div>
 <div class="container">
   <div class="row">
     <h4 class="m-3">観光客に向けたメッセージ</h4>
@@ -10,7 +13,7 @@
   <div class="row">
   <% @message.each do |message| %>
     <div class="col-md-3">
-      <%= image_tag(message.image) %>
+      <%= image_tag (message.image), size: "300x300" %>
     </div>
     <div class="col-md-3">
       <%= message.message %>

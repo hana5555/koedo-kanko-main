@@ -1,22 +1,24 @@
 <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <!--部分テンプレート カテゴリー検索機能-->
         <%= render 'public/posts/category_index', category: @category %>
       </div>
-      
+
+      <div class="col-md-10">
+        <div class="row">
         <% @posts.each do |post| %>
-        <div class="col-md-4">
-            <div>
-                <%= link_to post_path(post.id) do %>
-                    <%= image_tag(post.image) %>
-                <% end %>
-            </div>
-            <% end %>
+          <div class="col-md-3 mt-3">
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag (post.image), size: "200x200" %>
+          <% end %>
+          </div>
+        <% end %>
         </div>
-    </div>
-    <div class="pagination justify-content-center mt-2">
-      <%= paginate @posts %>
+      </div>
+      <div class="pagination justify-content-center mt-2">
+        <%= paginate @posts %>
+      </div>
     </div>
 </div>
 

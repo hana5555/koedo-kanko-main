@@ -1,7 +1,9 @@
 class Message < ApplicationRecord
   has_one_attached :image
 
-  #リレーション
-  #belongs_to :admin
+  #バリデーション
+  validates :message, presence: true
+  validates :image, presence: true
+
 
 end

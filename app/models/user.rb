@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #バリデーション
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :username, presence: true
+  validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+
+
   #リレーション
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -20,7 +29,7 @@ class User < ApplicationRecord
   def full_name
     self.last_name + " " + self.first_name
   end
-  
+
   #検索方法の分岐定義
   def self.looks(search, word)
     if search == "perfect"
@@ -35,5 +44,5 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
-      
+
 end
