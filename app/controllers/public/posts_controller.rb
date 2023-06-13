@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
   end
 
   def mypage
+    @user = User.find(params[:id])
     @posts = current_user.posts.published.page(params[:page]).reverse_order
     @category = Category.all
   end
@@ -45,7 +46,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
-      redirect_to posts_path(current_user)
+      redirect_to mypage_path(current_user)
     else
       render :edit
     end

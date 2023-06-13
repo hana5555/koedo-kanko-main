@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h4 class="m-5"><%= @user.username %>さんのコメント履歴一覧</h4>
+  </div>
+
+  <table class="table table-hover table-inverse col-sm-8 offset-sm-2">
+    <thead class="table-light">
+      <tr>
+        <th>コメント投稿日時</th>
+        <th>氏名</th>
+        <th>アカウント名</th>
+        <th>コメント内容</th>
+      </tr>
+    </thead>
+
+    <% @comment.each_with_index do |comment| %>
+    <tbody>
+      <tr>
+        <td><%= link_to comment.created_at.strftime('%Y/%m/%d %H:%M'), admin_comment_path(comment.id) %></td>
+        <td><%= comment.user.full_name %></td>
+        <td><%= comment.user.username %></td>
+        <td><%= comment.comment %></td>
+      </tr>
+    </tbody>
+    <% end %>
+
+    <div class="pagination justify-content-center mt-2">
+      <%= paginate @comment %>
+    </div>
+
+</div>

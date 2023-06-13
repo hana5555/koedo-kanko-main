@@ -16,8 +16,11 @@
             <% end %>
         </div>
     </div>
-    <div class="pagination justify-content-center mt-2">
-      <%= paginate @posts %>
+    <div class="row">
+        <p><%= link_to "お気に入り一覧へ", favorites_user_path(@user) %></p>
+        <div class="pagination justify-content-center mt-2">
+          <%= paginate @posts %>
+        </div>
     </div>
 </div>
 

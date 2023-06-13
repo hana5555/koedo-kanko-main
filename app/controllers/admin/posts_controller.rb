@@ -4,6 +4,12 @@ class Admin::PostsController < ApplicationController
     @posts = Post.published.page(params[:page]).reverse_order
   end
 
+  def userpage
+    @user = User.find(params[:id])
+    @posts = @user.posts.published.page(params[:page]).reverse_order
+    @category = Category.all
+  end
+
   def show
     @post = Post.find(params[:id])
     @category = Category.all

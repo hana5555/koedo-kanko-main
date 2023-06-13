@@ -16,25 +16,32 @@ Rails.application.routes.draw do
 
   #退会確認画面
   get '/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
-  #論理削除用のルーティング
+  #論理削除用
   patch '/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
 
-  #検索機能用のルーティング
+  #検索機能用
   get 'search' => 'public/searches#search'
 
+  #ログインユーザーの投稿一覧
   get '/posts/:id/mypage' => 'public/posts#mypage', as: 'mypage'
+
 
   root to: 'public/homes#top'
   scope module: :public do
     resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
       resources :favorites, only:[:create, :destroy]
-      #下書き用のルーティング idは必要ないのでcollectionを使用
+      #下書き用  idは必要ないのでcollectionを使用
       collection do
         get 'confirm'
       end
     end
-    resources :users, only:[:show, :edit, :update, :unsubscribe, :withdrawal]
+    #いいね一覧表示用
+    resources :users, only:[:show, :edit, :update, :unsubscribe, :withdrawal] do
+      member do
+        get :favorites
+      end
+    end
     resources :searches, only:[:search]
     resources :messages, only:[:index]
   end
@@ -45,6 +52,12 @@ Rails.application.routes.draw do
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  #１ユーザーの投稿一覧
+  get 'admin/posts/:id/userpage' => 'admin/posts#userpage', as: 'userpage'
+
+  #１ユーザーのコメント一覧
+  get 'admin/comments/:id/commentpage' => 'admin/comments#commentpage', as: 'commentpage'
 
   get '/admin' => 'admin/homes#top'
   namespace :admin do

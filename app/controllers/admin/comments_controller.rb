@@ -3,6 +3,12 @@ class Admin::CommentsController < ApplicationController
     @comment = Comment.page(params[:page])
   end
 
+  def commentpage
+    @user = User.find(params[:id])
+    #@comment = Comment.page(params[:page])
+    @comment = @user.comments.page(params[:page]).reverse_order
+  end
+
   def show
     @comment = Comment.find(params[:id])
   end
