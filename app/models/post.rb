@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   #画像投稿
   has_one_attached :image
-  
+
   #バリデーション
   validates :text, presence: true
   validates :category_id, presence: true

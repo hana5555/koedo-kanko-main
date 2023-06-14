@@ -29,7 +29,7 @@
     <%= link_to "マイページ", mypage_path(current_user), class: "btn btn-outline-secondary btn-sm" %>
   </li>
   <li>
-    <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-secondary btn-sm" %>
+    <%= link_to "新規投稿", new_post_path,data: {"turbolinks"=>false}, class: "btn btn-outline-secondary btn-sm" %>
   </li>
   <li>
     <%= link_to "町から、みなさまへ", messages_path, class: "btn btn-outline-secondary btn-sm" %>

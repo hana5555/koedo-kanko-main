@@ -6,13 +6,18 @@
       <%= render 'public/posts/confirm', posts: @posts %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-8 offset-md-2">
       <h4 class="m-3">投稿編集</h4>
         <%= render 'layouts/errors', obj: @post %>
           <div class="col-md-8 mt-3">
             <div class="mx-auto">
               <%= form_with model: @post do |f| %>
                 <table class="table table-borderless mt-3">
+                  <% if @post.image.attached? %>
+                    <tr>
+                      <td colspan="2"><%= image_tag @post.image ,size: "300x300" %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <td><%= f.label :投稿画像 %></td>
                     <td><%= f.file_field :image, accept: "image/*" %></td>

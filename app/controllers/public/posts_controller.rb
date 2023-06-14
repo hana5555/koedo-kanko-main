@@ -1,13 +1,22 @@
 class Public::PostsController < ApplicationController
   def index
+# current_user 現在ログインしているユーザーがとれる
+# current_admin 現在ログインしているadmin
     @posts = Post.published.display.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @category = Category.all
+    @categories = Category.all
+
     if params[:category_id].present?
-      @categories = Category.all
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.order(created_at: :desc).all.page(params[:page])
-      render :category_result
+      @posts = @category.posts.published.display.order(created_at: :desc).all.page(params[:page])
+      # redirect_to category_result_path
+    elsif
+      @categories = Category.all
+      if params[:page].present?
+        @posts = Post.published.display.order(created_at: :desc).all.page(params[:page])
+      elsif
+        @posts = Post.published.display.order(created_at: :desc).all.page(params[:page])
+      end
     end
   end
 
@@ -23,6 +32,7 @@ class Public::PostsController < ApplicationController
   end
 
   def create
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
@@ -35,7 +45,6 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    #@posts = @post.comments.display
     @comment = Comment.new
     @category = Category.all
   end

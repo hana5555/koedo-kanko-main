@@ -6,10 +6,10 @@
       <%= render 'public/posts/confirm', posts: @posts %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-8 offset-md-2">
       <h4 class="m-3">新規投稿</h4>
       <%= render 'layouts/errors', obj: @post %>
-         <div class="col-md-8 mt-3">
+         <div class="col-md-9 mt-3">
           <%= form_with model: @post, url: posts_path, local: true do |f| %>
             <table class="table table-borderless mt-3">
               <tr>
@@ -28,13 +28,13 @@
           </div>
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
               <div>
                 <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
                 <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
+                 <% end %>
               </div>
             </div>
-         <% end %>
         </div>
     </div>
   </div>

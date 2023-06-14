@@ -15,6 +15,12 @@ class Admin::PostsController < ApplicationController
     @category = Category.all
   end
 
+  def category_result
+    @categories = Category.all
+    @category = Category.find(params[:category_id])
+    @posts = @category.posts.order(created_at: :desc).all.page(params[:page])
+  end
+
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
