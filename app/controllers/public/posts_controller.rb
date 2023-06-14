@@ -1,7 +1,6 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.published.page(params[:page]).reverse_order
-    @posts = Post.display.page(params[:page]).reverse_order
+    @posts = Post.published.display.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @category = Category.all
     if params[:category_id].present?
@@ -20,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
   end
 
   def create
@@ -35,12 +35,14 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    #@posts = @post.comments.display
     @comment = Comment.new
     @category = Category.all
   end
 
   def edit
     @post = Post.find(params[:id])
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
   end
 
   def update

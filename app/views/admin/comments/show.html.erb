@@ -26,20 +26,11 @@
         </tbody>
       </table>
 
-      <%= form_with(model: [ :admin, @comment ]) do |f| %>
       <div class="row">
-        <%= f.label :公開ステータス %>
-        <%= f.radio_button :is_displayed, :true, checked: true %>
-        <%= f.label :status_true, "公開" %>
-        <%= f.radio_button :is_displayed, :false %>
-        <%= f.label :status_false, "非公開" %>
+         <%= link_to "削除する", admin_comment_path(@comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-success" %>
       </div>
-
-      <div class="row">
-        <%= f.submit '変更を保存', class: "btn btn-success btn-sm" %>
-      </div>
-      <% end %>
     </div>
+
 
     <div class="col-6">
       <div class="row">

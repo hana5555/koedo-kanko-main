@@ -19,7 +19,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
     flash[:notice] = "公開ステータスを更新しました。"
-    redirect_to admin_posts_path
+    redirect_to admin_path
   end
 
   private

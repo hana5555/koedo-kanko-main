@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin/homes#top'
   namespace :admin do
     resources :posts, only:[:index, :show, :update]
-    resources :comments, only:[:index, :show, :update]
+    resources :comments, only:[:index, :show, :update, :destroy]
     resources :users, only:[:index, :show, :edit, :update]
     resources :categories, only:[:index, :create, :edit, :update, :destroy]
     resources :messages, only:[:index, :new, :create, :edit, :update, :destroy]

@@ -12,13 +12,12 @@ class Admin::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def update
-    @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    flash[:notice] = "コメントステータスを更新しました。"
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    flash[:notice] = "コメントを削除しました。"
     redirect_to admin_comments_path
   end
-
 
   private
 

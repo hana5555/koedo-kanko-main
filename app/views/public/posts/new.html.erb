@@ -1,42 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-2">
+      <h4 class="m-3">下書き一覧</h4>
+      <!--部分テンプレート 下書き一覧-->
+      <%= render 'public/posts/confirm', posts: @posts %>
+    </div>
+
+    <div class="col-md-10">
       <h4 class="m-3">新規投稿</h4>
       <%= render 'layouts/errors', obj: @post %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="mx-auto">
-
-      <%= form_with model: @post, url: posts_path, local: true do |f| %>
-      <table class="table table-borderless mt-3">
-        <tr>
-          <td><%= f.label :投稿画像 %></td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :キャプションを入力 %></td>
-          <td><%= f.text_area :text, placeholder: "キャプションを入力" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :カテゴリーを選択 %></td>
-          <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></td>
-        </tr>
-      </table>
-
-      <div class="row">
-        <div class="col-sm-3">
-
-          <div>
-            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+         <div class="col-md-8 mt-3">
+          <%= form_with model: @post, url: posts_path, local: true do |f| %>
+            <table class="table table-borderless mt-3">
+              <tr>
+                <td><%= f.label :投稿画像 %></td>
+                <td><%= f.file_field :image, accept: "image/*" %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :キャプションを入力 %></td>
+                <td><%= f.text_area :text, placeholder: "キャプションを入力" %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :カテゴリーを選択 %></td>
+                <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--" %></td>
+              </tr>
+            </table>
           </div>
-          <div>
-            <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
-          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+                <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+                <%= f.submit "投稿する", class:'btn btn-lg btn-success' %>
+              </div>
+            </div>
+         <% end %>
         </div>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>
