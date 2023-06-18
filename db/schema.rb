@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_044818) do
     t.boolean "is_displayed", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -74,8 +72,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_044818) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -85,22 +81,19 @@ ActiveRecord::Schema.define(version: 2023_06_14_044818) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.boolean "is_displayed", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "searches", force: :cascade do |t|
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_searches_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
