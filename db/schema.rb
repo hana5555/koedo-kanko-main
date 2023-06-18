@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 2023_06_14_044818) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.text "text", null: false
     t.integer "status", default: 0, null: false
     t.boolean "is_displayed", default: true, null: false

@@ -9,7 +9,6 @@ class Public::PostsController < ApplicationController
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
       @posts = @category.posts.published.display.order(created_at: :desc).all.page(params[:page])
-      # redirect_to category_result_path
     elsif
       @categories = Category.all
       if params[:page].present?
