@@ -12,7 +12,9 @@
             </div>
 
             <div class="row">
-                <%= render "public/favorites/btn", post: @post %>：
+                <div id="favorite_buttons_<%= @post.id %>">
+                  <%= render "public/favorites/btn", post: @post %>：
+                </div>
                 <%= @post.user.username %>：
                 <%= @post.created_at.strftime('%Y/%m/%d') %>
             </div>

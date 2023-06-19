@@ -1,13 +1,24 @@
 <% if post.favorited_by?(current_user) %>
-  <%= link_to post_favorite_path(post), method: :delete do %>
+  <%= link_to post_favorite_path(post), method: :delete, remote: true do %>
    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
    <%= post.favorites.count %>
   <% end %>
 
 <% else %>
 
-  <%= link_to post_favorites_path(post), method: :post do %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
     <i class="fas fa-heart" aria-hidden="true"></i>
     <%= post.favorites.count %>
   <% end %>
 <% end %>
+
+
+
+bookers2のルーティング
+book_favorites DELETE /books/:book_id/favorites(.:format)    favorites#destroy
+               POST   /books/:book_id/favorites(.:format)    favorites#create
+               
+               
+koedo-kank-mainのルーティング
+post_favorites POST   /posts/:post_id/favorites(.:format)          public/favorites#create
+ post_favorite DELETE /posts/:post_id/favorites/:id(.:format)      public/favorites#destroy

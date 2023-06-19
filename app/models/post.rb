@@ -26,7 +26,7 @@ class Post < ApplicationRecord
 
   #いいね機能用
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.exists?(user_id: user.id)
   end
 
     #検索方法の分岐定義

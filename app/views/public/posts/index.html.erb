@@ -11,11 +11,15 @@
         <div class="col-md-10">
             <div class="row">
             <% @posts.each do |post| %>
+              <% if post.image.attached? %>
                 <div class="col-md-3 mt-3">
-                <%= link_to post_path(post.id) do %>
-                  <%= image_tag (post.image), size: "200x200" %>
-                <% end %>
+                  <%= link_to post_path(post.id) do %>
+                    <%= image_tag (post.image), size: "200x200" %>
+                  <% end %>
                 </div>
+              <% else %>
+                <p>投稿はまだありません。</p>
+              <% end %>
             <% end %>
             </div>
         </div>
