@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
-      resources :favorites, only:[:create, :destroy]
+      resource :favorites, only:[:create, :destroy]
       #下書き用  idは必要ないのでcollectionを使用
       collection do
         get 'confirm'

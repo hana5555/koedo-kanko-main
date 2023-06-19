@@ -3,6 +3,20 @@
     <%= image_tag "koedo.top.JPG", size: "1200x600" %>
   </div>
 
+  <div class="row" style="padding-top:30px;">
+      <% @messages.each do |message| %>
+      <div class="col-lg-3">
+        <%= link_to public_messages_index_path,class: "text-dark" do %>
+        <%= image_tag message.image, size: "180x100" %>
+        <p><%= message.message %></p>
+        <% end %>
+      </div>
+      <% end %>
+  </div>
+  <div class="text-right">
+    <%= link_to "全てのお知らせを見る>", public_messages_index_path %>
+  </div>
+
 <!--ログイン済みのユーザー-->
   <% if user_signed_in? %>
     <div class="row">

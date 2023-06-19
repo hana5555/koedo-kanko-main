@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3">
 
-            <!--部分テンプレート カテゴリー検索機能-->
+            <!--カテゴリー検索機能　部分テンプレート-->
             <%= render 'public/posts/category_index', category: @category %>
         </div>
 
@@ -12,9 +12,11 @@
             </div>
 
             <div class="row">
-                <div id="favorite_buttons_<%= @post.id %>">
-                  <%= render "public/favorites/btn", post: @post %>：
-                </div>
+                <!--いいね機能　部分テンプレート-->
+                  <div id="favorite_buttons_<%= @post.id %>">
+                    <%= render "public/favorites/btn", post: @post %>
+                  </div>
+
                 <%= @post.user.username %>：
                 <%= @post.created_at.strftime('%Y/%m/%d') %>
             </div>
@@ -32,10 +34,16 @@
                 <% end %>
             </div>
             <div class="row">
-                <%= render "public/comments/form", post: @post, comment: @comment %>
+                <!--コメント投稿　部分テンプレート-->
+              <div class="new-comment">
+                <%= render 'public/comments/form', post: @post, comment: @comment %>
+              </div>
             </div>
             <div class="row">
-                <%= render "public/comments/index", post: @post %>
+                <!--コメント一覧　部分テンプレート-->
+              <div id="comments_area">
+                <%= render 'public/comments/index', post: @post, comment: @comment %>
+              </div>
             </div>
         </div>
     </div>
