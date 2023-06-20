@@ -33,10 +33,6 @@ class Post < ApplicationRecord
   def self.looks(search, word)
     if search == "perfect"
       @post = Post.where("text LIKE?", "#{word}")
-    elsif search == "forward"
-      @post = Post.where("text LIKE?", "#{word}%")
-    elsif search == "backward"
-      @post = Post.where("text LIKE?", "%#{word}")
     elsif search == "partial"
       @post = Post.where("text LIKE?", "%#{word}%")
     else

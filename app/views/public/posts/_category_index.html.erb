@@ -1,13 +1,17 @@
 <!--部分テンプレート　カテゴリー検索機能-->
-<div class="row">
-  <table class="table table-borderless">
-    <tr>
-      <th class="text-center">カテゴリー</th>
-    </tr>
-    <% category.each do |category| %>
-    <tr>
-      <td><%= link_to category.name, posts_path(category_id: category.id) %></td>
-    </tr>
-    <% end %>
-  </table>
+<div style="background-color:#FFF;">
+  <div class="row">
+    <table class="table table-borderless">
+      <tr>
+        <th class="text-center">
+          <h5>カテゴリー</h5>
+        </th>
+      </tr>
+      <% category.each do |category| %>
+      <tr>
+        <td class="text-center"><%= link_to category.name, posts_path(category_id: category.id) %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

@@ -13,6 +13,10 @@
                         <td><%= f.file_field :image, accept: "image/*" %></td>
                     </tr>
                     <tr>
+                        <td><%= f.label :タイトルを入力 %></td>
+                        <td><%= f.text_field :title, class: "form-control title" %></td>
+                    </tr>
+                    <tr>
                         <td><%= f.label :キャプションを入力 %></td>
                         <td><%= f.text_field :message, class: "form-control message" %></td>
                     </tr>

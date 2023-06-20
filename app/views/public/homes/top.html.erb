@@ -1,43 +1,51 @@
 <div class="container">
-  <div class="row">
-    <%= image_tag "koedo.top.JPG", size: "1200x600" %>
-  </div>
 
+  <!--お知らせ新着表示-->
   <div class="row" style="padding-top:30px;">
-      <% @messages.each do |message| %>
-      <div class="col-lg-3">
+    <% @messages.each do |message| %>
+      <div class="col-lg-3 col-md-4 col-sm-6">
         <%= link_to public_messages_index_path,class: "text-dark" do %>
         <%= image_tag message.image, size: "180x100" %>
-        <p><%= message.message %></p>
+        <p><%= message.title %></p>
         <% end %>
       </div>
       <% end %>
+      <div class="text-center">
+        <%= link_to "全てのお知らせを見る>>", public_messages_index_path %>
+      </div>
   </div>
-  <div class="text-right">
-    <%= link_to "全てのお知らせを見る>", public_messages_index_path %>
+
+  <!--メインビジュアル-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col no-gutters">
+        <%= image_tag "koedo.top.JPG", size: "1000x500" %>
+      </div>
+    </div>
   </div>
+
 
 <!--ログイン済みのユーザー-->
   <% if user_signed_in? %>
+  <div class="container">
     <div class="row">
-      <div class="col-sm-4">
-        <%= link_to '新規投稿をする', new_post_path, class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-      <div class="col-sm-4">
-        <%= link_to '投稿を見る', posts_path, class: "btn btn-outline-secondary btn-sm" %>
+      <div class="d-grid gap-2 my-5 mx-auto">
+        <%= link_to '新規投稿をする', new_post_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to '投稿を見る', posts_path, class: "btn btn-secondary btn-lg" %>
       </div>
     </div>
+  </div>
+
+<!--ログイン前のユーザー-->
   <% else %>
+  <div class="container">
     <div class="row">
-      <div class="col-sm-4">
-        <%= link_to "新規登録をする\n会員登録をすると投稿ができるようになります。", new_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-      <div class="col-sm-4">
-        <%= link_to "投稿を見る", posts_path, class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-      <div class="col-sm-4">
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      <div class="d-grid gap-3 my-5 mx-auto">
+        <%= link_to "新規会員登録をする", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "投稿を見る", posts_path, class: "btn btn-secondary btn-lg" %>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-success btn-lg sign_in", method: :post %>
       </div>
     </div>
+  </div>
   <% end %>
 </div>

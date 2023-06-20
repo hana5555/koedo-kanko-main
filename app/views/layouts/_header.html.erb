@@ -1,55 +1,93 @@
 <!--管理者ヘッダー-->
 <% if admin_signed_in? %>
-  <li>
-    <%= link_to "HOME", admin_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "コメント履歴一覧", admin_comments_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "カテゴリー一覧", admin_categories_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "お知らせ", admin_messages_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <%= link_to admin_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-house"></i> ホーム
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to admin_users_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-users"></i> 会員一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to admin_comments_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-comments"></i> コメント履歴一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to admin_categories_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-torii-gate"></i> カテゴリ一覧
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to admin_messages_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-envelope"></i> お知らせ
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+        <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+      <% end %>
+    </li>
+  </ul>
 
 <!--ログインユーザーのヘッダー-->
 <% elsif user_signed_in? %>
-  ようこそ、<%= link_to current_user.username, user_path(current_user) %>さん！
-  <li>
-    <%= link_to "HOME", posts_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "マイページ", mypage_path(current_user), class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "新規投稿", new_post_path,data: {"turbolinks"=>false}, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "お知らせ", messages_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
+  <ul class="nav justify-content-end">
+    <li class="row align-items-center mr-3">
+      ようこそ、<%= link_to current_user.username, user_path(current_user) %>さん！
+    </li>
+    <li>
+      <%= link_to posts_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-house"></i> ホーム
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_post_path,data: {"turbolinks"=>false}, class: 'nav-link' do %>
+        <i class="fa-regular fa-square-plus"></i> 新規投稿
+      <% end %>
+    </li>
+    <li>
+      <%= link_to mypage_path(current_user), class: 'nav-link' do %>
+        <i class="fa-solid fa-camera"></i> マイページ
+      <% end %>
+    </li>
+    <li>
+      <%= link_to messages_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-envelope"></i> お知らせ
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+        <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+      <% end %>
+    </li>
+  </ul>
 
 <!--未ログインユーザーのヘッダー-->
 <% else %>
-  <li>
-    <%= link_to "HOME", posts_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "お知らせ", messages_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
-  <li>
-    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
-  </li>
+  <ul class="nav justify-content-end">
+    <li>
+      <%= link_to posts_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-house"></i> ホーム
+      <% end %>
+    </li>
+    <li>
+      <%= link_to messages_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-envelope"></i> お知らせ
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_user_registration_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-user-plus"></i> 新規会員登録
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_user_session_path, class: 'nav-link' do %>
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
+      <% end %>
+    </li>
+  </ul>
 <% end %>

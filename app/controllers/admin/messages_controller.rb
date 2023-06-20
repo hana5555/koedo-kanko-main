@@ -1,6 +1,6 @@
 class Admin::MessagesController < ApplicationController
   def index
-    @message = Message.all
+    @message = Message.page(params[:page]).reverse_order
   end
 
   def new
@@ -42,6 +42,6 @@ class Admin::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:image, :message)
+    params.require(:message).permit(:image, :title, :message)
   end
 end

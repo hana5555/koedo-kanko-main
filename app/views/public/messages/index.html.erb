@@ -1,13 +1,19 @@
 <div class="container">
 
   <div class="row">
-  <% @message.each do |message| %>
-    <div class="col-md-3">
+    <% @message.each do |message| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
       <%= image_tag (message.image), size: "300x300" %>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 mt-3">
+        <p><strong><%= message.title %></strong></p>
+        <p><%= message.message %></p>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= message.message %>
+    <% end %>
+    <div class="pagination justify-content-center mt-3">
+      <%= paginate @message, theme: 'twitter-bootstrap-4' %>
     </div>
-  <% end %>
   </div>
 </div>

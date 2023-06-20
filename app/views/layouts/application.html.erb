@@ -13,7 +13,7 @@
 
   <body>
     <div class="footerFixed">
-      <header>
+      <header style="background-color:#696969;">
         <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
           <div class="container">
             <a class="navbar-brand" href = "/">
@@ -21,6 +21,7 @@
             </a>
             <div class="d-flex flex-column">
               <ul class="navbar-nav ml-auto">
+                <!--ヘッダー-->
                 <%= render "layouts/header" %>
               </ul>
               <ul class="navbar-nav ml-auto">
@@ -30,11 +31,13 @@
           </div>
         </nav>
       </header>
-      <main>
-        <div class="container">
+
+      <!--メイン-->
+      <main style="background-color:#FFC7AF;">
           <%= yield %>
-        </div>
       </main>
+
+      <!--フッター-->
       <footer class="border-black border-top pt-5 pb-4"></footer>
     </div>
   </body>

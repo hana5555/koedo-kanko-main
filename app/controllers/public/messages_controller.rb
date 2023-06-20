@@ -1,5 +1,5 @@
 class Public::MessagesController < ApplicationController
   def index
-    @message = Message.all
+    @message = Message.page(params[:page]).reverse_order
   end
 end

@@ -4,23 +4,26 @@
 <div class="container">
   <div class="row">
     <h4 class="m-3">観光客に向けたメッセージ</h4>
+    <p class="mt-3"><%= link_to "新規作成", new_admin_message_path, class: 'btn btn-md btn-success' %></p>
   </div>
 
   <div class="row">
-    <%= link_to "新規作成", new_admin_message_path, class: 'btn btn-lg btn-success' %>
-  </div>
-
-  <div class="row">
-  <% @message.each do |message| %>
-    <div class="col-md-3">
-      <%= image_tag (message.image), size: "300x300" %>
+    <% @message.each do |message| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+        <%= image_tag (message.image), size: "300x300" %>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 mt-3">
+        <p><strong><%= message.title %></strong></p>
+        <p><%= message.message %></p>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 mt-3">
+        <%= link_to "編集する", edit_admin_message_path(message.id), class: 'btn btn-sm btn-secondary' %>
+      </div>
     </div>
-    <div class="col-md-3">
-      <%= message.message %>
+    <% end %>
+    <div class="pagination justify-content-center mt-3">
+      <%= paginate @message, theme: 'twitter-bootstrap-4' %>
     </div>
-    <div class="col-md-3">
-      <%= link_to "編集する", edit_admin_message_path(message.id), class: 'btn btn-lg btn-success' %>
-    </div>
-  <% end %>
   </div>
 </div>
