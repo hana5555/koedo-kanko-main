@@ -1,6 +1,14 @@
+<div class="row">
 <% if user_signed_in? %>
   <%= form_with(model:[post, comment], local: false) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントを投稿", class: "w-100" %>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <div class="row mb-2">
+    <div class="col-8">
+      <%= f.text_area :comment, rows:'2', placeholder: "コメントを投稿", class: "w-100" %>
+    </div>
+    <div class="col-2">
+      <%= f.submit "送信する", class: "btn btn-outline-success" %>
+    </div>
+  </div>
   <% end %>
 <% end %>
+</div>

@@ -1,5 +1,13 @@
-<% posts.each do |post| %>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag (post.image), size: "200x200" %>
-  <% end %>
-<% end %>
+<!--下書き一覧　部分テンプレート-->
+<div style="background-color:#FFF;">
+  <div class="text-center">
+     <h5>下書き</h5>
+  </div>
+  <div class="text-center">
+    <% posts.each do |post| %>
+      <%= link_to post_path(post.id) do %>
+        <%= image_tag (post.image), size: "200x200" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
