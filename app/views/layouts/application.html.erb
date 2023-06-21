@@ -13,11 +13,12 @@
 
   <body>
     <div class="footerFixed">
-      <header style="background-color:#696969;">
+      <header>
+      <!--<header style="background-color:#696969;">-->
         <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
           <div class="container">
             <a class="navbar-brand" href = "/">
-              <h2 class="logo">小江戸川越</h2>
+              <h2 class="logo"><%= image_tag "tokimo.logo.jpg", size: "300x100" %></h2>
             </a>
             <div class="d-flex flex-column">
               <ul class="navbar-nav ml-auto">
@@ -25,6 +26,7 @@
                 <%= render "layouts/header" %>
               </ul>
               <ul class="navbar-nav ml-auto">
+                <!--検索窓-->
                 <%= render "public/searches/form" %>
               </ul>
             </div>

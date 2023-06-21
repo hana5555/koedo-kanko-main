@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   #論理削除用
   patch '/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
 
-  #検索機能用
-  get 'search' => 'public/searches#search'
 
   #ログインユーザーの投稿一覧
   get '/posts/:id/mypage' => 'public/posts#mypage', as: 'mypage'

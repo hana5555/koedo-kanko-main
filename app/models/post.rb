@@ -30,14 +30,12 @@ class Post < ApplicationRecord
   end
 
     #検索方法の分岐定義
-  def self.looks(search, word)
-    if search == "perfect"
-      @post = Post.where("text LIKE?", "#{word}")
-    elsif search == "partial"
-      @post = Post.where("text LIKE?", "%#{word}%")
-    else
-      @post = Post.all
-    end
-  end
+ def self.search(search)
+   if search
+     where(['text LIKE ?', "%#{search}%"]) #検索とtext(投稿キャプション)の部分一致を表示
+   else
+     "見つかりませんでした。" #検索内容がなかった場合
+   end
+ end
 
 end
