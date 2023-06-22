@@ -1,2 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.main-container {
+  padding: 0;
+}
+
+.main-visual {
+  padding: 0;
+}
+
+.main-visual .col {
+  padding: 0;
+}
