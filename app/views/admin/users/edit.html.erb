@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h4 class="m-5">
-        <%= @user.username %>さんの会員情報編集
-      </h4>
+    <div class="col-md-5 my-3">
+     <h4 class="m-3"><%= image_tag "post.edit.jpg", size: "300x100" %></h4>
     </div>
   </div>
 
@@ -92,7 +90,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-4 offset-2 mt-2 my-5">
       <%= f.submit "変更を保存", class: 'btn btn-block btn-success' %>
     </div>
   </div>

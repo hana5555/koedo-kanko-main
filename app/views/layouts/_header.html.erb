@@ -31,6 +31,10 @@
         <i class="fa-solid fa-right-from-bracket"></i> ログアウト
       <% end %>
     </li>
+    <!--検索窓-->
+    <li class="row align-items-center mr-3">
+      <%= render "admin/posts/search_form" %>
+    </li>
   </ul>
 
 <!--ログインユーザーのヘッダー-->
@@ -64,6 +68,10 @@
         <i class="fa-solid fa-right-from-bracket"></i> ログアウト
       <% end %>
     </li>
+    <!--検索窓-->
+    <li class="row align-items-center mr-3">
+      <%= render "public/searches/form" %>
+    </li>
   </ul>
 
 <!--未ログインユーザーのヘッダー-->
@@ -88,6 +96,12 @@
       <%= link_to new_user_session_path, class: 'nav-link' do %>
         <i class="fa-solid fa-right-to-bracket"></i> ログイン
       <% end %>
+    </li>
+  </ul>
+  <ul class="nav justify-content-end">
+    <!--検索窓-->
+    <li>
+      <%= render "public/searches/form" %>
     </li>
   </ul>
 <% end %>

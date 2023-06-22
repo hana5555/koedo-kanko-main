@@ -4,10 +4,10 @@
 
 <div class="container">
   <div class="row">
-    <h4 class="m-5">
+    <h4 class="col-md-4 my-3">
       <%= @user.username %>さんの会員情報詳細
     </h4>
-    <div class="col-sm-4">
+    <div class="col-md-3 col-sm-4 offset-5 my-4">
       <%= link_to 'アカウント情報を編集する', edit_admin_user_path(@user), class: "btn btn-sm btn-block btn-success"%>
     </div>
   </div>
@@ -52,12 +52,13 @@
   </table>
 
   <div class="row">
-    <div class="col-sm-2">
-      <%= @user.username %>さんの<%= link_to "投稿一覧ページ", userpage_path(@user), class: "btn btn-sm btn-block btn-success" %>
+    <div class="col-sm-4 offset-1 mt-3 mb-2">
+      <%= link_to "投稿一覧ページ", userpage_path(@user), class: "btn btn-sm btn-block btn-secondary" %>
     </div>
-    <div class="col-sm-3">
-      <%= @user.username %>さんの
-      <%= link_to "コメント履歴一覧ページ", commentpage_path(@user), class: "btn btn-sm btn-block btn-success" %>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 offset-1 mt-3 mb-5">
+      <%= link_to "コメント履歴一覧ページ", commentpage_path(@user), class: "btn btn-sm btn-block btn-secondary" %>
     </div>
   </div>
 </div>

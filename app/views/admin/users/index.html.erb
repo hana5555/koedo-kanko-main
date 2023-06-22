@@ -3,7 +3,7 @@
     <h4 class="m-5"><%= image_tag "user.index.jpg", size: "160x50" %></h4>
   </div>
 
-  <table class="table table-hover table-inverse col-sm-8 offset-sm-2">
+  <table class="table table-hover table-inverse col-sm-8 offset-sm-2 mb-3">
     <thead class="table-light">
       <tr>
         <th>会員ID</th>
@@ -33,7 +33,7 @@
     <% end %>
   </table>
 
-  <div class="pagination justify-content-center mt-2">
+  <div class="pagination justify-content-center mt-2 mb-5">
     <%= paginate @user %>
   </div>
 </div>

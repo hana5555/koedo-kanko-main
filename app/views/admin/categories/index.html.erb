@@ -4,29 +4,24 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <h4 class="m-3">カテゴリー一覧・新規作成</h4>
-    </div>
-  </div>
+    <div class="col-md-6 col-sm-6">
+      <h4 class="mt-3 mb-5"><%= image_tag "post.new.jpg", size: "300x100" %></h4>
+       <%= render "public/shared/error_messages", resource: @category %>
 
-   <%= render "public/shared/error_messages", resource: @category %>
+       <%= form_with model: @category, url: admin_categories_path do |f| %>
+       <div class="col-md-4">
+         <%= f.label :name, "カテゴリー名：" %>
+       </div>
+       <div class="col-md-4">
+         <%= f.text_field :name, placeholder: "カテゴリー名" %>
+       </div>
+       <div class="col-md-4 my-5">
+         <%= f.submit "新規登録", class: "btn btn-success btn-md" %>
+       </div>
+     </div>
+     <% end %>
 
-   <%= form_with model: @category, url: admin_categories_path do |f| %>
-   <div class="row">
-     <div class="col-2">
-       <%= f.label :name, "カテゴリー名" %>
-     </div>
-     <div class="col-3">
-       <%= f.text_field :name, placeholder: "カテゴリー名" %>
-     </div>
-     <div class="col-3">
-       <%= f.submit "新規登録", class: "btn btn-success btn-sm" %>
-     </div>
-   </div>
-   <% end %>
-
-   <div class="row">
-     <div class="col-4">
+     <div class="col-md-6 col-sm-6 my-3">
        <table class="table">
          <thead>
            <tr>
@@ -39,7 +34,7 @@
            <% @categories.each do |category| %>
            <tr>
              <td><%= category.name %></td>
-             <td><%= link_to "編集する", edit_admin_category_path(category), class: "btn btn-success btn-sm" %></td>
+             <td><%= link_to "編集する", edit_admin_category_path(category), class: "btn btn-secondary btn-sm" %></td>
            </tr>
          </tbody>
           <% end %>

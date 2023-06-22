@@ -3,10 +3,10 @@
 </div>
 <div class="container">
   <div class="row">
-    <h4 class="m-5"><%= image_tag "comment.index.jpg", size: "250x50" %></h4>
+    <h4 class="m-3"><%= image_tag "comment.index.jpg", size: "250x50" %></h4>
   </div>
 
-  <table class="table table-hover table-inverse col-sm-8 offset-sm-2">
+  <table class="table table-hover table-inverse col-sm-8 offset-sm-2 mb-3">
     <thead class="table-light">
       <tr>
         <th>コメント投稿日時</th>
@@ -27,7 +27,7 @@
     </tbody>
     <% end %>
 
-    <div class="pagination justify-content-center mt-2">
+    <div class="pagination justify-content-center mt-2 mb-3">
       <%= paginate @comment %>
     </div>
 

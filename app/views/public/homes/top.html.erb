@@ -4,14 +4,15 @@
   <div class="row" style="padding-top:30px;">
     <% @messages.each do |message| %>
       <div class="col-lg-3 col-md-4 col-sm-6">
-        <%= link_to public_messages_index_path,class: "text-dark" do %>
-        <%= image_tag message.image, size: "180x100" %>
+        <%= image_tag message.image, size: "200x100" %>
         <p><%= message.title %></p>
-        <% end %>
       </div>
       <% end %>
       <div class="text-center">
-        <%= link_to "全てのお知らせを見る>>", public_messages_index_path %>
+        <%= link_to public_messages_index_path, class: "text-dark" do %>
+        <%= image_tag "message.index.jpg", size: "150x60" %>
+        <p>詳しくはこちら>></p>
+        <% end %>
       </div>
   </div>
 

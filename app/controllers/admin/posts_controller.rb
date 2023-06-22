@@ -1,9 +1,5 @@
 class Admin::PostsController < ApplicationController
 
-  def index
-    @posts = Post.published.page(params[:page]).reverse_order
-  end
-
   def userpage
     @user = User.find(params[:id])
     @posts = @user.posts.published.page(params[:page]).reverse_order

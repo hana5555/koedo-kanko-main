@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
   def index
-    @comment = Comment.page(params[:page])
+    @comment = Comment.page(params[:page]).reverse_order
   end
 
   def commentpage

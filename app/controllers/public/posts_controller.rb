@@ -6,9 +6,7 @@ class Public::PostsController < ApplicationController
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
       @posts = @category.posts.published.display.order(created_at: :desc).all.page(params[:page])
-      #@posts = Post.published.display.order(created_at: :desc).all.page(params[:page])
     else
-    #@posts = Post.all
       @posts = Post.all.published.display
     end
 

@@ -1,0 +1,8 @@
+<div class="form-inline my-2 float-right">
+  <%= form_tag(posts_path, :method => "get") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "検索", :text => nil, class: "btn btn-success my-2 my-sm-0 search_btn" %>
+  <% end %>
+
+
+</div>
