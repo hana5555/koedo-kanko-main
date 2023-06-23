@@ -3,6 +3,7 @@ class Message < ApplicationRecord
 
   #バリデーション
   validates :message, presence: true
+  validates :title, presence: true
   validates :image, presence: true
 
 
