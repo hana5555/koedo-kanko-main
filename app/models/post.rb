@@ -3,10 +3,10 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   #バリデーション
+  validates :image, presence: true
   validates :text, presence: true
   validates :category_id, presence: true
   validates :status, presence: true
-  validates :image, presence: true
 
   #リレーション
   has_many :comments, dependent: :destroy

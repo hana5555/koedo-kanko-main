@@ -60,6 +60,9 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 gem 'enum_help'
 gem 'jquery-rails'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 
 #デプロイ用の記述

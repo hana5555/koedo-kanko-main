@@ -68,6 +68,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
     if @post.update(post_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to mypage_path(current_user)

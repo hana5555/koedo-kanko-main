@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+      category: カテゴリー
+      comment: コメント
+      message: お知らせ
+    attributes:
+      user:
+        last_name: 名前(姓)
+        first_name: 名前(名)
+        last_name_kana: フリガナ(セイ)
+        first_name_kana: フリガナ(メイ)
+        username: アカウント名
+        telephone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+      post:
+        text: キャプション
+        category: カテゴリー
+        image: 画像
+        status: 投稿する、もしくは下書き保存
+      category:
+        name: カテゴリー
+      comment:
+        comment: コメント
+      message:
+        message: お知らせ
+        title: タイトル
+        image: 画像
