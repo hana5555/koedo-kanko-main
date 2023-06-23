@@ -19,10 +19,17 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   #ゲストログイン
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+  
   def self.guest
     find_or_create_by!(last_name: 'ゲスト', first_name: 'ユーザー', last_name_kana: 'ゲスト', first_name_kana: 'ユーザー', username: 'guestuser', email: 'guest@example.com', telephone_number: '00000000000') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
 
   #フルネームで表示させる
