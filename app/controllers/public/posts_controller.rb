@@ -1,7 +1,5 @@
 class Public::PostsController < ApplicationController
   def index
-# current_user 現在ログインしているユーザーがとれる
-# current_admin 現在ログインしているadmin
     @categories = Category.all
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
@@ -15,20 +13,6 @@ class Public::PostsController < ApplicationController
     end
     @posts = @posts.order(created_at: :desc)
     @posts = @posts.page(params[:page])
-
-    #@posts = Post.published.display.page(params[:page]).reverse_order.search(params[:search])
-
-    #if params[:category_id].present?
-    #  @category = Category.find(params[:category_id])
-    #  @posts = @category.posts.published.display.order(created_at: :desc).all.page(params[:page])
-    #elsif
-    #  @categories = Category.all
-    #  if params[:page].present?
-    #    @posts = Post.published.display.order(created_at: :desc).all.page(params[:page])
-    #  elsif
-    #    @posts = Post.published.display.order(created_at: :desc).all.page(params[:page])
-    #  end
-    #end
   end
 
   def mypage

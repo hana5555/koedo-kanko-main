@@ -1,36 +1,36 @@
 <div class="container">
-    <div class="row">
-        <h4 class="mt-3"><%= image_tag "post.edit.jpg", size: "300x100" %></h4>
-        <%= render 'layouts/errors', obj: @message %>
-    </div>
+  <div class="row">
+    <h4 class="mt-3"><%= image_tag "post.edit.jpg", size: "300x100" %></h4>
+      <%= render 'layouts/errors', obj: @message %>
+  </div>
 
-    <div class="row">
-        <div class="mx-auto">
-            <%= form_with(model: [ :admin, @message ]) do |f| %>
-                <table class="table table-borderless mt-3">
-                    <tr>
-                        <td><%= f.label :投稿画像 %></td>
-                        <td><%= f.file_field :image, accept: "image/*" %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :タイトルを入力 %></td>
-                        <td><%= f.text_field :title, class: "form-control title" %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :キャプションを入力 %></td>
-                        <td><%= f.text_field :message, class: "form-control message" %></td>
-                    </tr>
-                </table>
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_with(model: [ :admin, @message ]) do |f| %>
+        <table class="table table-borderless mt-3">
+          <tr>
+            <td><%= f.label :投稿画像 %></td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :タイトルを入力 %></td>
+            <td><%= f.text_field :title, class: "form-control title" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :キャプションを入力 %></td>
+            <td><%= f.text_field :message, class: "form-control message" %></td>
+          </tr>
+        </table>
 
-                <div class="row">
-                    <div class="col">
-                        <%= f.submit '変更を保存', class: "btn btn-success btn-sm" %>
-                    </div>
-                </div>
-            <% end %>
-                <div class="col">
-                    <%= link_to "削除する", admin_message_path(@message), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-success" %>
-                </div>
+        <div class="row">
+          <div class="col">
+            <%= f.submit '変更を保存', class: "btn btn-success btn-sm" %>
+          </div>
         </div>
+      <% end %>
+      <div class="col">
+        <%= link_to "削除する", admin_message_path(@message), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-success" %>
+      </div>
     </div>
+  </div>
 </div>

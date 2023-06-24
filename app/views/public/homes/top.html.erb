@@ -7,13 +7,13 @@
         <%= image_tag message.image, size: "200x100" %>
         <p><%= message.title %></p>
       </div>
+    <% end %>
+    <div class="col-lg-2 col-md-3 col-sm-3 ml-3">
+      <%= link_to public_messages_index_path, class: "text-dark" do %>
+      <%= image_tag "message.index.jpg", size: "150x60" %>
+      <p>詳しくはこちら>></p>
       <% end %>
-      <div class="col-lg-2 col-md-3 col-sm-3 ml-3">
-        <%= link_to public_messages_index_path, class: "text-dark" do %>
-        <%= image_tag "message.index.jpg", size: "150x60" %>
-        <p>詳しくはこちら>></p>
-        <% end %>
-      </div>
+    </div>
   </div>
 
   <!--メインビジュアル-->

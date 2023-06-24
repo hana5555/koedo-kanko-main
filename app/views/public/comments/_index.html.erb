@@ -1,6 +1,6 @@
 <table>
   <tbody>
-      <% post.comments.each do |comment| %>
+    <% post.comments.each do |comment| %>
       <tr>
         <td><%= comment.user.username %>：<%= comment.comment %>：<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td>
@@ -9,6 +9,6 @@
           <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>
