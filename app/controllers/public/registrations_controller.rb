@@ -6,7 +6,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def after_sign_up_path_for(resource)
-    flash[:notice] = "ようこそ！会員登録が完了しました。"
     posts_path
   end
 

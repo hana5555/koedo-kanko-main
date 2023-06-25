@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
       render :new
       return
     end
-    flash[:notice] = "投稿しました。"
+    flash[:success] = "投稿しました。"
     redirect_to posts_path
   end
 
@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     @posts = current_user.posts.draft.page(params[:page]).reverse_order
     if @post.update(post_params)
-      flash[:notice] = "投稿を更新しました。"
+      flash[:success] = "投稿を更新しました。"
       redirect_to mypage_path(current_user)
     else
       render :edit
@@ -68,7 +68,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    flash[:notice] = "投稿を削除しました。"
+    flash[:danger] = "投稿を削除しました。"
     redirect_to posts_path
   end
 

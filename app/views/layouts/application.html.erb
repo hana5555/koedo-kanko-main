@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KoedoKanko</title>
+    <title>小江戸川越観光サイト</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -31,7 +31,9 @@
 
       <!--メイン-->
       <main>
-          <%= yield %>
+        <!--フラッシュメッセージ-->
+        <%= render 'layouts/flash_message' %>
+        <%= yield %>
       </main>
 
       <!--フッター-->

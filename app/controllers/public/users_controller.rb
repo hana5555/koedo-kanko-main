@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "アカウント情報を更新しました。"
+      flash[:success] = "アカウント情報を更新しました。"
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -43,12 +43,12 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :username, :email, :telephone_number)
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user) , warning: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-  
+
 end

@@ -20,7 +20,7 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    flash[:notice] = "公開ステータスを更新しました。"
+    flash[:success] = "公開ステータスを更新しました。"
     redirect_to admin_path
   end
 
