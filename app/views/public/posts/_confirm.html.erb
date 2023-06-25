@@ -3,10 +3,10 @@
   <div class="text-center">
      <h5><%= image_tag "post.confirm.jpg", size: "220x80" %></h5>
   </div>
-  <div class="text-center">
+  <div class="text-center post-confirm">
     <% posts.each do |post| %>
       <%= link_to post_path(post.id) do %>
-        <%= image_tag (post.image), size: "200x200" %>
+        <%= image_tag (post.image) %>
       <% end %>
     <% end %>
   </div>

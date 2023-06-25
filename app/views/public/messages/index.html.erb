@@ -6,8 +6,8 @@
   <div class="row">
     <% @message.each do |message| %>
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
-      <%= image_tag (message.image), size: "300x300" %>
+      <div class="col-lg-4 col-md-4 col-sm-12 mt-3 message-image">
+      <%= image_tag (message.image) %>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 mt-3">
         <p><strong><%= message.title %></strong></p>
