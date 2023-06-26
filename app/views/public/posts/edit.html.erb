@@ -11,10 +11,10 @@
       <div class="col-md-9 mt-3">
         <div class="mx-auto">
           <%= form_with model: @post do |f| %>
-            <table class="table table-borderless mt-3">
+            <table class="table table-borderless mt-3 post-image">
             <% if @post.image.attached? %>
               <tr>
-                <td colspan="2"><%= image_tag @post.image ,size: "300x300" %></td>
+                <td colspan="2"><%= image_tag @post.image %></td>
               </tr>
             <% end %>
               <tr>
@@ -23,7 +23,7 @@
               </tr>
               <tr>
                 <td><%= f.label :キャプション %></td>
-                <td><%= f.text_area :text, class: "form-control text" %></td>
+                <td><%= f.text_area :text, class: "form-control text", size: "50x7" %></td>
               </tr>
               <tr>
                 <td><%= f.label :カテゴリーを選択 %></td>

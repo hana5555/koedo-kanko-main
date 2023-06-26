@@ -15,16 +15,16 @@
         </tr>
         <tr>
           <td><%= f.label :タイトルを入力 %></td>
-          <td><%= f.text_area :title, placeholder: "タイトルを入力" %></td>
+          <td><%= f.text_area :title, placeholder: "タイトルを入力", size: "30x2" %></td>
         </tr>
         <tr>
           <td><%= f.label :メッセージを入力 %></td>
-          <td><%= f.text_area :message, placeholder: "メッセージを入力" %></td>
+          <td><%= f.text_area :message, placeholder: "メッセージを入力", size: "50x7" %></td>
         </tr>
       </table>
 
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3 pb-5">
           <div>
             <%= f.submit "新規作成", class: 'btn btn-lg btn-success' %>
           </div>

@@ -18,19 +18,19 @@
           </tr>
           <tr>
             <td><%= f.label :キャプションを入力 %></td>
-            <td><%= f.text_field :message, class: "form-control message" %></td>
+            <td><%= f.text_area :message, class: "form-control message", size: "50x7" %></td>
           </tr>
         </table>
 
         <div class="row">
-          <div class="col">
-            <%= f.submit '変更を保存', class: "btn btn-success btn-sm" %>
+          <div class="col-sm-3 pt-2 pb-5">
+            <%= f.submit '変更を保存', class: "btn btn-success btn-md" %>
+          </div>
+          <% end %>
+          <div class="col-sm-3 pt-2 pb-5 offset-3">
+            <%= link_to "削除する", admin_message_path(@message), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-md btn-danger" %>
           </div>
         </div>
-      <% end %>
-      <div class="col">
-        <%= link_to "削除する", admin_message_path(@message), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-success" %>
-      </div>
     </div>
   </div>
 </div>

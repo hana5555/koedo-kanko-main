@@ -2,10 +2,10 @@
 <% if user_signed_in? %>
   <%= form_with(model:[post, comment], local: false) do |f| %>
   <div class="row mb-2">
-    <div class="col-8">
-      <%= f.text_area :comment, rows:'2', placeholder: "コメントを投稿", class: "w-100" %>
+    <div class="col-md-8 col-sm-8">
+      <%= f.text_area :comment, placeholder: "コメントを投稿", size: "50x2" %>
     </div>
-    <div class="col-2">
+    <div class="col-md-2 col-sm-2 offset-2">
       <%= f.submit "送信する", class: "btn btn-outline-success" %>
     </div>
   </div>

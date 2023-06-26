@@ -3,8 +3,8 @@
   <!--お知らせ新着表示-->
   <div class="row" style="padding-top:30px;">
     <% @messages.each do |message| %>
-      <div class="col-lg-2 col-md-3 col-sm-3 offset-1">
-        <%= image_tag message.image, size: "200x100" %>
+      <div class="col-lg-2 col-md-3 col-sm-3 offset-1 message-top">
+        <%= image_tag message.image %>
         <p><%= message.title %></p>
       </div>
     <% end %>

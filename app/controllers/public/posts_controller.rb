@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def index
     @categories = Category.all
     if params[:category_id].present?
@@ -77,6 +79,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:text, :image, :category_id, :status)
+  end
+
+  def is_matching_login_user
+    post = Post.find(params[:id])
+    unless post.user.id == current_user.id
+    #unless current_user.present?
+      redirect_to posts_path
+    end
   end
 
 end
