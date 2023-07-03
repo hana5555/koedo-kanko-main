@@ -20,6 +20,8 @@ ja:
         text: キャプション
         category: カテゴリー
         image: 画像
+        published: 投稿
+        draft: 下書き
       category:
         name: カテゴリー
       comment:

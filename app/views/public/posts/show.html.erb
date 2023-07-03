@@ -29,6 +29,7 @@
         <% end %>
         <% if @post.user == current_user %>
           <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+          <span><%= @post.is_displayed ? '' : '※管理者によって非表示化されています。※' %></span>
         <% end %>
       </div>
       <div class="row ml-5">
