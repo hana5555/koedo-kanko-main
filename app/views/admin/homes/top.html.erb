@@ -12,6 +12,7 @@
           <%= link_to admin_post_path(post.id) do %>
             <%= image_tag (post.image) %>
           <% end %>
+          <%= post.is_displayed ? '' : '非公開' %>
         </div>
         <% end %>
       </div>
